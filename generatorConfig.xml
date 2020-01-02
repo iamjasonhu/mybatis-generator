@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+  <!-- 驱动包位置 -->
+  <classPathEntry location="F:\tools\mybatis-generator\postgresql-9.1-901.jdbc4.jar" />
+
+  <context id="postgresql" targetRuntime="MyBatis3">
+
+	<commentGenerator>
+		<property name="suppressAllComments" value="true" />
+	</commentGenerator>
+    
+	<!-- 数据库设置 -->
+	<jdbcConnection driverClass="org.postgresql.Driver" connectionURL="jdbc:postgresql://ip/database?useUnicode=true" userId="iorder_master" password="pwd"></jdbcConnection>
+
+	<javaTypeResolver>
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+	<!-- 实体类 -->
+    <javaModelGenerator targetPackage="test.model" targetProject="F:\tools\mybatis-generator\project">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+	<!-- xml文件 -->
+	<sqlMapGenerator targetPackage="test.xml" targetProject="F:\tools\mybatis-generator\project">
+        <property name="enableSubPackages" value="true"/>
+    </sqlMapGenerator>
+
+	<!-- dao文件 -->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="test.dao"  targetProject="F:\tools\mybatis-generator\project">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+
+	<!--
+		tableName 数据库中表名
+		domainObjectName 生成的文件名 domainObjectName+Mapper.xml
+	-->
+	<table tableName="user_defined_multilanguage" domainObjectName="UserDefinedMultilanguage" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
+
+  </context>
+</generatorConfiguration>
